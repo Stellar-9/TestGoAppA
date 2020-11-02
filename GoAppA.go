@@ -9,8 +9,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-//declaring test global variable
-
 func main() {
 
 	// get ENV variable value for os
