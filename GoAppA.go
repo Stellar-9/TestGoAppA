@@ -29,19 +29,17 @@ func main() {
 
 func HelloWorld(w http.ResponseWriter, r *http.Request) {
 
-	keys, ok := r.URL.Query()["name"]
+	names, ok := r.URL.Query()["name"]
 
-	if !ok || len(keys[0]) < 1 {
-		log.Println("Url Param 'key' is missing")
+	if !ok || len(names[0]) < 1 {
+		log.Println("Missing URL parameter 'name'")
 		return
 	}
 
-	// Query()["key"] will return an array of items,
-	// we only want the single item.
-	key := keys[0]
+	name := names[0]
 
-	log.Println("Url Param 'key' is: " + string(key))
+	log.Println("URL parameter 'name': " + string(name))
 	w.Header().Set("Content-Type", "application/json") // setup JSON header
-	json.NewEncoder(w).Encode("Hello " + string(key))  // encoding string and key value to JSON
+	json.NewEncoder(w).Encode("Hello " + string(name)) // encoding string and name value to JSON
 
 }
